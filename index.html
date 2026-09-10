@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swami Atma Jagran | Home - The Digital Monk</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --primary-dark: #4a0404; /* Deep Maroon */
+            --accent-gold: #c5a059;   /* Rich Golden */
+            --card-bg: #fdfbfb;
+            --border-color: #e5d8d8;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+        header {
+            background: var(--bg-color);
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(74, 4, 4, 0.05);
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .brand-logo {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent-gold);
+            flex-shrink: 0;
+            background: #1a0505;
+        }
+        .brand-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .logo-area {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .logo-sub {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1px;
+            letter-spacing: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .nav-link-btn {
+            background: none;
+            border: 2px solid var(--accent-gold);
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .nav-link-btn:hover {
+            background: var(--primary-dark);
+            color: #fff;
+        }
+        .admin-nav-btn {
+            font-size: 0.95rem; 
+            color: #fff; 
+            background: var(--primary-dark); 
+            border: 2px solid var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .hero-tag {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-title {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin: 15px 0;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mandala-banner-container {
+            width: 100%;
+            height: 320px;
+            background: radial-gradient(circle, #1a0505 0%, #0a0101 100%);
+            border-radius: 12px;
+            border: 2px solid var(--accent-gold);
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .starry-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(#fff 1px, transparent 1px), radial-gradient(#c5a059 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            opacity: 0.3;
+        }
+        .rotating-mandala {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 3px dashed var(--accent-gold);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: rotateMandala 25s linear infinite;
+            box-shadow: 0 0 25px rgba(197, 160, 89, 0.4);
+        }
+        .rotating-mandala::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px dotted #fff;
+            opacity: 0.7;
+        }
+        .mandala-inner-text {
+            position: absolute;
+            color: var(--accent-gold);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        @keyframes rotateMandala {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .book-thumbnail {
+            width: 100%;
+            height: 190px;
+            background: linear-gradient(135deg, #2b0303 0%, #110101 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0 6px 15px rgba(74,4,4,0.2);
+            overflow: hidden;
+        }
+        .book-thumbnail::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            background: var(--accent-gold);
+            box-shadow: inset 2px 0 5px rgba(0,0,0,0.5);
+        }
+        .book-title-main {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .book-title-sub {
+            color: #ffffff;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .book-badge {
+            margin-top: 10px;
+            background: var(--accent-gold);
+            color: #1a0505;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 3px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        @media(max-width: 700px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 1.7rem; }
+        }
+        .product-box {
+            background: var(--card-bg);
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 25px 20px;
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.15);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .price-display {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .new-price {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .free-price {
+            color: #27ae60;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        .buy-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 14px;
+            background: var(--primary-dark);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 2px solid var(--primary-dark);
+            letter-spacing: 1px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .buy-btn:hover {
+            background: #ffffff;
+            color: var(--primary-dark);
+        }
+        .free-btn {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+        .free-btn:hover {
+            background: #ffffff;
+            color: #27ae60;
+        }
+        .whatsapp-btn {
+            background: #25d366 !important;
+            border-color: #25d366 !important;
+            color: #ffffff !important;
+            text-decoration: none;
+            display: none;
+            margin-top: 10px;
+        }
+        .whatsapp-btn:hover {
+            background: #1ebe5d !important;
+        }
+        .section-title {
+            color: var(--primary-dark);
+            font-size: 1.6rem;
+            margin: 40px 0 20px 0;
+            font-weight: 700;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .content-block {
+            margin: 25px 0;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+        .highlight {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        @media(max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+        .feature-card {
+            background: #fdfbfb;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-gold);
+        }
+        .feature-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .about-monk {
+            background: #fdf8f8;
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--primary-dark);
+            color: #ffffff;
+            margin-top: 50px;
+            border-top: 3px solid var(--accent-gold);
+        }
+        footer p {
+            color: #f1e6d0;
+            font-size: 0.95rem;
+            margin: 5px 0;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .modal-box {
+            background: #ffffff;
+            border: 2px solid var(--accent-gold);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .row-group {
+            display: flex;
+            gap: 10px;
+        }
+        .row-group > div {
+            flex: 1;
+        }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+        .admin-table th, .admin-table td {
+            border: 1px solid var(--border-color);
+            padding: 8px;
+            text-align: left;
+        }
+        .admin-table th {
+            background-color: var(--primary-dark);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="brand-logo">
+                <img src="swami atmajagran logo4 PM.png" alt="Swami Atma Jagran Logo">
+            </div>
+            <div>
+                <div class="logo-area">Swami Atma Jagran</div>
+                <div class="logo-sub">The Digital Monk</div>
+            </div>
+        </div>
+        <div class="nav-links">
+            <button onclick="openConsultationModal()" class="nav-link-btn">🌟 Consultation</button>
+            <button onclick="openAdminModal()" class="admin-nav-btn">🔒 जिज्ञासु पटल</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="hero-section">
+            <span class="hero-tag">Know the secrets of your stars</span>
+            <h1 class="hero-title">AI Janm-Sutra: The Ultimate Karmic & Vedic Blueprint</h1>
+            <p class="hero-desc">Experience absolute clarity with deep D1, D9, and Chandra chart interpretations. Built on 20+ years of spiritual legacy blended with state-of-the-art AI prompts.</p>
+            
+            <div class="mandala-banner-container">
+                <div class="starry-bg"></div>
+                <div class="rotating-mandala">
+                    <div class="mandala-inner-text">SWAMI ATMA JAGRAN<br>VEDIC MANDALA</div>
+                </div>
+            </div>
+        </div>
+        <div class="products-grid" id="store">
+            <div class="product-box">
+                <div>
+                    <div class="book-thumbnail">
+                        <div class="book-title-main">आपकी AI जन्मपत्रिका</div>
+                        <div class="book-title-sub">Basic Vedic & Planetary Guide</div>
+                        <div class="book-badge">3 Pages Lead Report</div>
+                    </div>
+                    <h3 style="color: var(--primary-dark); margin-bottom: 8px;">AI Free Janm Patrika</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Basic planetary positions & introductory Janm Kundli report to start your journey.</p>
+                    <div class="price-display">
+                        <span class="free-price">₹0</span>
+                    </div>
+                    <p style="color: #27ae60; font-weight: 600; font-size: 0.85rem;">⚡ Instant Lead Magnet Access</p>
+                </div>
+                <button onclick="openCheckoutModal('Free Janm Patrika', 0)" class="buy-btn free-btn">GET FREE REPORT →</button>
+            </div>
+            <div class="product-box" style="border-color: var(--primary-dark);">
+                <div>
+                    <div class="book-thumbnail">
+                        <div class="book-title-main">Master Karmic Blueprint</div>
+                        <div class="book-title-sub">D1, D9 & Chandra Deep Analysis</div>
+                        <div class="book-badge">Complete Vedic Book Edition</div>
+                    </div>
+                    <h3 style="color: var(--primary-dark); margin-bottom: 8px;">Master Karmic Blueprint</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">D1, D9, Chandra Charts + 10-Page Detailed Report & Secret AI Prompts.</p>
+                    <div class="price-display">
+                        <span class="old-price">₹2,999/-</span>
+                        <span class="new-price">₹999/-</span>
+                    </div>
+                    <p style="color: var(--accent-gold); font-weight: 600; font-size: 0.85rem;">⚡ Complete Deep-Dive Analysis</p>
+                </div>
+                <button onclick="openCheckoutModal('Master Karmic Blueprint', 999)" class="buy-btn">BUY NOW →</button>
+            </div>
+        </div>
+        <div>
+            <h3 class="section-title">क्यों हमने 250 पेज के बजाय सिर्फ 10 पेज चुने?</h3>
+            <div class="content-block">
+                <p>बाजार में बिकने वाली 250-पेज की ऑटोमेटेड जन्मपत्रिकाएँ सिर्फ बोरियत और भ्रम पैदा करती हैं। उनमें 90% हिस्सा कॉपी-पेस्ट और रोबोटिक डेटा होता है जिसे कोई पूरा नहीं पढ़ पाता।</p>
+                <p style="margin-top: 15px;">हम आपको <span class="highlight">बोझ नहीं, क्लैरिटी देना चाहते हैं</span>। हम देंगे आपको सीधा रिजल्ट, सीधा कंक्लूजन।</p>
+            </div>
+        </div>
+        <div>
+            <h3 class="section-title">Everything You Need, In One Report</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>Marriage & Relationships</h4>
+                    <p>D9 Navamsa analysis for deep compatibility and alignment.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Career & Business</h4>
+                    <p>Direct planetary positioning to decode your true professional calling.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Finance & Wealth</h4>
+                    <p>Karmic financial blocks and growth timing without fear-mongering.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Secret AI Prompts</h4>
+                    <p>Master prompts for D1, D9, and Chandra charts to unlock answers anytime.</p>
+                </div>
+            </div>
+        </div>
+        <div class="about-monk">
+            <h3 style="color: var(--primary-dark); margin-bottom: 15px; font-size: 1.5rem;">Who is Swami Atma Jagran?</h3>
+            <p style="color: var(--text-muted);">Swami Atma Jagran is <strong>"The Digital Monk"—the Zorba the Buddha sanyasi</strong> who brings absolute clarity to your life right into your hands. Blending deep spiritual intuition with modern logical analysis, he bridges ancient Vedic wisdom with cutting-edge AI. No fake remedies, no fear-tactics—just pure truth derived from your D1, D9 Navamsa, and Moon charts.</p>
+        </div>
+    </div>
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="modal-close" onclick="closeCheckoutModal()">&times;</span>
+            <h3 id="modalProductTitle" style="color: var(--primary-dark); margin-bottom: 5px;">Enter Birth Details</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Required to generate your personalized Vedic chart report.</p>
+            
+            <form id="orderForm" onsubmit="proceedToPayment(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="userName" placeholder="e.g. Jatin Nagar" required>
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <input type="date" id="userDob" required>
+                </div>
+                <div class="row-group">
+                    <div class="form-group">
+                        <label>Time of Birth</label>
+                        <input type="time" id="userTob" required>
+                    </div>
+                    <div class="form-group">
+                        <label>AM / PM</label>
+                        <select id="userAmpm" required>
+                            <option value="AM">AM (सुबह)</option>
+                            <option value="PM">PM (शाम/रात)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Birth Place (City, State)</label>
+                    <input type="text" id="userPob" placeholder="e.g. Bhopal, MP" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number (For Report Delivery)</label>
+                    <input type="tel" id="userPhone" placeholder="7000534788" maxlength="10" required>
+                </div>
+                <button type="submit" id="payButton" class="buy-btn" style="max-width: 100%; margin-top: 10px;">Proceed to Payment →</button>
+            </form>
+        </div>
+    </div>
+    <div id="qrPaymentModal" class="modal-overlay">
+        <div class="modal-box" style="text-align: center;">
+            <span class="modal-close" onclick="closeQrModal()">&times;</span>
+            <h3 style="color: var(--primary-dark); margin-bottom: 5px;">Scan & Pay Securely</h3>
+            <p id="qrAmountText" style="font-size: 1.1rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 10px;"></p>
+            
+            <div style="background: #000; padding: 15px; border-radius: 10px; display: inline-block; border: 2px solid var(--accent-gold); margin-bottom: 15px;">
+                <div style="color: #fff; font-size: 0.8rem; margin-bottom: 5px; font-weight: 700; letter-spacing: 1px;">SWAMI ATMA JAGRAN</div>
+                <img src="WhatsApp Image 2026-07-31 at 22.05.25.jpeg" alt="Swami Atma Jagran QR" style="width: 200px; height: 200px; object-fit: contain; border-radius: 6px;">
+                <div style="color: #c5a059; font-size: 0.75rem; margin-top: 5px; font-weight: 600;">UPI: 7000534788-3@ybl</div>
+            </div>
+            <div style="margin-bottom: 15px;">
+                <a id="upiAppButton" href="#" class="buy-btn" style="background: #2575fc; border-color: #2575fc; text-decoration: none; display: block; margin-bottom: 8px;">📱 Pay Direct via PhonePe / Paytm App</a>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 15px;">
+                पेमेंट पूरा करने के बाद ही नीचे <strong>"I Have Paid"</strong> बटन पर क्लिक करें।
+            </p>
+            <button onclick="confirmOrderSuccess()" class="buy-btn free-btn" style="max-width: 100%;">I Have Paid — Complete Order ✓</button>
+            
+            <a id="whatsappUpdateBtn" href="#" target="_blank" class="buy-btn whatsapp-btn">💬 WhatsApp पर अपडेट पाएं</a>
+        </div>
+    </div>
+    <div id="consultationModal" class="modal-overlay">
+        <div class="modal-box" style="text-align: center;">
+            <span class="modal-close" onclick="closeConsultationModal()">&times;</span>
+            <h3 style="color: var(--primary-dark); font-size: 1.6rem; margin-bottom: 10px;">🌟 Swami Atma Jagran | 20+ Years Legacy</h3>
+            <p style="font-size: 1rem; color: var(--text-muted); margin-bottom: 20px;">Private, confidential guidance from trusted experts. Predict your future with intuition, not just calculations.</p>
+            
+            <div style="background: #fdf8f8; padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 20px; text-align: left;">
+                <p style="font-weight: 700; color: var(--primary-dark); font-size: 1.05rem; margin-bottom: 8px;">📅 Book Your Schedule Today:</p>
+                <p style="font-size: 0.95rem; color: #27ae60; font-weight: 700; margin-bottom: 5px;">• 1st Consultation: 100% FREE!</p>
+                <p style="font-size: 0.95rem; color: var(--text-muted); font-weight: 600;">• Subsequent Consultations / Deep Sessions: ₹1,999/- only</p>
+            </div>
+            <form onsubmit="bookConsultationSchedule(event)" style="text-align: left;">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="consultName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number</label>
+                    <input type="tel" id="consultPhone" placeholder="7000534788" maxlength="10" required>
+                </div>
+                <button type="submit" class="buy-btn" style="max-width: 100%; margin-top: 10px;">Book Your Schedule Now →</button>
+            </form>
+        </div>
+    </div>
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 750px;">
+            <span class="modal-close" onclick="closeAdminModal()">&times;</span>
+            <h3 style="color: var(--primary-dark); margin-bottom: 5px; font-size: 1.4rem;">🔒 जिज्ञासु पटल (Admin Dashboard)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Real-time customer lead database, order tracking, and status assignment.</p>
+            
+            <div style="overflow-x: auto;">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Name & WhatsApp</th>
+                            <th>Service</th>
+                            <th>DOB / Time / Place</th>
+                            <th>Tracking Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: #888;">No submissions recorded yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p><strong>Swami Atma Jagran — The Digital Monk</strong></p>
+        <p>किसी भी समस्या या सहायता के लिए संपर्क करें:</p>
+        <p>📧 Email: support@swamiatmajagran.com | 📱 WhatsApp / Call: +91 7000534788</p>
+        <p style="margin-top: 20px; font-size: 0.85rem; color: #d4b584;">धन्यवाद! आपका भविष्य आपके अपने हाथों में है।</p>
+    </footer>
+    <script>
+        let selectedProduct = '';
+        let productPrice = 0;
+        let ordersList = [];
+        let currentTempOrder = null;
+        const MERCHANT_UPI = "7000534788-3@ybl"; 
+        const MERCHANT_NAME = "Swami Atma Jagran";
+
+        function openCheckoutModal(prodName, price) {
+            selectedProduct = prodName;
+            productPrice = price;
+            document.getElementById('modalProductTitle').innerText = prodName + (price > 0 ? ` (₹${price})` : ' (FREE)');
+            document.getElementById('payButton').innerText = price > 0 ? `Proceed to Payment (₹${price}) →` : `Get Free Report Instantly →`;
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+        function proceedToPayment(event) {
+            event.preventDefault();
+            const name = document.getElementById('userName').value;
+            const dob = document.getElementById('userDob').value;
+            const tob = document.getElementById('userTob').value;
+            const ampm = document.getElementById('userAmpm').value;
+            const pob = document.getElementById('userPob').value;
+            const phone = document.getElementById('userPhone').value;
+            if(!name || !dob || !tob || !pob || !phone) {
+                alert('कृपया सभी डिटेल्स सही से भरें।');
+                return;
+            }
+            const orderId = 'ORD_' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            
+            currentTempOrder = {
+                orderId,
+                name,
+                product: selectedProduct,
+                details: `${dob} | ${tob} ${ampm} | ${pob}`,
+                phone,
+                status: productPrice > 0 ? 'Payment Pending' : 'Free Report Generated'
+            };
+            closeCheckoutModal();
+            if(productPrice > 0) {
+                document.getElementById('qrAmountText').innerText = `Amount to Pay: ₹${productPrice}`;
+                const upiDeepLink = `upi://pay?pa=${MERCHANT_UPI}&pn=${encodeURIComponent(MERCHANT_NAME)}&am=${productPrice}&cu=INR&tn=${encodeURIComponent(selectedProduct + ' - ' + orderId)}`;
+                document.getElementById('upiAppButton').href = upiDeepLink;
+                document.getElementById('whatsappUpdateBtn').style.display = 'none';
+                document.getElementById('qrPaymentModal').style.display = 'flex';
+            } else {
+                ordersList.push(currentTempOrder);
+                alert('आपकी फ्री रिपोर्ट बुक हो गई है! आपका बहुत-बहुत धन्यवाद। आपकी कुंडली 24 घंटे के अंदर आपके WhatsApp नंबर पर भेज दी जाएगी। जगाएं अपना भाग्य।');
+                document.getElementById('orderForm').reset();
+            }
+        }
+        function closeQrModal() {
+            document.getElementById('qrPaymentModal').style.display = 'none';
+        }
+        function confirmOrderSuccess() {
+            if(currentTempOrder) {
+                currentTempOrder.status = 'Payment Received / Assigned';
+                ordersList.push(currentTempOrder);
+                const waMessage = `🙏 Namaste - ${currentTempOrder.name}\n\nAapka order #${currentTempOrder.orderId} — ${currentTempOrder.product} — successfully receive ho gaya hai. Or agle 24 hours ke andar apko delivery hojayegi\n\nAapki Kundli bilkul sahi bane, iske liye please apni birth details (date, time, birthplace) ek baar check kar lein.\n\nSahi janam vivaran, matlab sahi bhavishyavani 🌟\n\nDhanyavaad! 🌸`;
+                const encodedMsg = encodeURIComponent(waMessage);
+                const userPhoneNum = '91' + currentTempOrder.phone;
+                const waLink = `https://api.whatsapp.com/send?phone=${userPhoneNum}&text=${encodedMsg}`;
+                
+                const btn = document.getElementById('whatsappUpdateBtn');
+                btn.href = waLink;
+                btn.style.display = 'block';
+                alert('पेमेंट कन्फर्म हो गया है! अब नीचे हरे रंग के "WhatsApp पर अपडेट पाएं" बटन पर क्लिक करके कन्फर्मेशन भेज सकते हैं।');
+            }
+        }
+        function openConsultationModal() {
+            document.getElementById('consultationModal').style.display = 'flex';
+        }
+        function closeConsultationModal() {
+            document.getElementById('consultationModal').style.display = 'none';
+        }
+        function bookConsultationSchedule(event) {
+            event.preventDefault();
+            const name = document.getElementById('consultName').value;
+            const phone = document.getElementById('consultPhone').value;
+            alert(`धन्यवाद ${name}! आपकी फ्री कंसल्टेशन बुकिंग दर्ज हो गई है। हमारी टीम जल्द ही आपसे WhatsApp पर संपर्क करेगी।`);
+            document.getElementById('consultationModal').style.display = 'none';
+        }
+        function openAdminModal() {
+            const tbody = document.getElementById('adminTableBody');
+            tbody.innerHTML = '';
+            if(ordersList.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: #888;">No submissions recorded yet.</td></tr>`;
+            } else {
+                ordersList.forEach(ord => {
+                    tbody.innerHTML += `<tr>
+                        <td><b>${ord.orderId}</b></td>
+                        <td>${ord.name}<br><small>${ord.phone}</small></td>
+                        <td>${ord.product}</td>
+                        <td><small>${ord.details}</small></td>
+                        <td><span style="color: #27ae60; font-weight: bold;">${ord.status}</span></td>
+                    </tr>`;
+                });
+            }
+            document.getElementById('adminModal').style.display = 'flex';
+        }
+        function closeAdminModal() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
